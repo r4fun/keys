@@ -5,6 +5,9 @@ keys
 ====
 
 <!-- badges: start -->
+
+[![R build
+status](https://github.com/r4fun/keys/workflows/R-CMD-check/badge.svg)](https://github.com/r4fun/keys/actions)
 <!-- badges: end -->
 
 The goal of keys is to add hotkeys to shiny applications using
