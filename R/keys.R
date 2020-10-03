@@ -19,7 +19,7 @@ html_dependency_mousetrap <- function() {
     package = "keys",
     src = c(
       file = "mousetrap",
-      href = "https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5"
+      href = "https://unpkg.com/mousetrap@1.6.5"
     ),
     script = "mousetrap.min.js",
   )
