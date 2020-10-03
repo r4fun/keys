@@ -15,11 +15,11 @@ keys_js <- function(id, keys) {
 html_dependency_mousetrap <- function() {
   htmltools::htmlDependency(
     name = "mousetrap",
-    version = "3.3.2",
+    version = "1.6.5",
     package = "keys",
     src = c(
       file = "mousetrap",
-      href = "https://unpkg.com/mousetrap@1.6.5"
+      href = "https://cdnjs.cloudflare.com/ajax/libs/mousetrap/1.6.5"
     ),
     script = "mousetrap.min.js",
   )
