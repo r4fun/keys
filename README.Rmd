@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# keys
+# keys <img src="man/figures/logo.png" align="right" height=150/>
 
 <!-- badges: start -->
 [![R build status](https://github.com/r4fun/keys/workflows/R-CMD-check/badge.svg)](https://github.com/r4fun/keys/actions)
