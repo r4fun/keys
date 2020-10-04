@@ -1,30 +1,3 @@
-minify <- function(x) {
-  gsub("[[:space:]]+", " ", x)
-}
-
-keys_js <- function(id, keys) {
-  x <- sprintf("$(document).on('shiny:sessioninitialized', function() {
-    Mousetrap.bind('%s', function() {
-      Shiny.setInputValue('%s', '%s', {priority: 'event'});
-    });
-  });", keys, id, keys)
-
-  htmltools::tags$head(htmltools::tags$script(minify(x)))
-}
-
-html_dependency_mousetrap <- function() {
-  htmltools::htmlDependency(
-    name = "mousetrap",
-    version = "1.6.5",
-    package = "keys",
-    src = c(
-      file = "mousetrap",
-      href = "https://unpkg.com/mousetrap@1.6.5"
-    ),
-    script = "mousetrap.min.js",
-  )
-}
-
 #' Create a keys input control
 #'
 #' @description Create a key input that can be used to observe keys pressed by
