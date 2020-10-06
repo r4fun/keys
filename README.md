@@ -11,7 +11,9 @@ status](https://github.com/r4fun/keys/workflows/R-CMD-check/badge.svg)](https://
 <!-- badges: end -->
 
 The goal of `{keys}` is to add hotkeys to shiny applications using
-[`mousetrap.js`](https://github.com/ccampbell/mousetrap).
+[`mousetrap.js`](https://github.com/ccampbell/mousetrap). A
+demonstration of the package can be found
+[here](https://r4fun.dev/shiny/keys-app/).
 
 Installation
 ------------
