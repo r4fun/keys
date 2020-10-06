@@ -31,7 +31,6 @@
 #' @export
 keysInput <- function(inputId, keys) {
   htmltools::tagList(
-    lapply(keys, function(x) keys_js(inputId, x)),
-    html_dependency_mousetrap()
+    lapply(keys, function(x) keys_js(inputId, x))
   )
 }
