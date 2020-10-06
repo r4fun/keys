@@ -19,7 +19,7 @@ knitr::opts_chunk$set(
 [![R build status](https://github.com/r4fun/keys/workflows/R-CMD-check/badge.svg)](https://github.com/r4fun/keys/actions)
 <!-- badges: end -->
 
-The goal of keys is to add hotkeys to shiny applications using [`mousetrap.js`](https://github.com/ccampbell/mousetrap).
+The goal of `{keys}` is to add hotkeys to shiny applications using [`mousetrap.js`](https://github.com/ccampbell/mousetrap).
 
 ## Installation
 
@@ -97,7 +97,7 @@ ui <- fluidPage(
 
 server <- function(input, output, session) {
   observeEvent(input$rm, {
-    removeKeys(c("a", "b"))
+    removeKeys("a")
   })
   observeEvent(input$keys, {
     print(input$keys)

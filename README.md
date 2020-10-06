@@ -1,7 +1,8 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# keys <img src="man/figures/logo.png" align="right" height=150/>
+keys <img src="man/figures/logo.png" align="right" height=150/>
+===============================================================
 
 <!-- badges: start -->
 
@@ -9,100 +10,95 @@
 status](https://github.com/r4fun/keys/workflows/R-CMD-check/badge.svg)](https://github.com/r4fun/keys/actions)
 <!-- badges: end -->
 
-The goal of keys is to add hotkeys to shiny applications using
+The goal of `{keys}` is to add hotkeys to shiny applications using
 [`mousetrap.js`](https://github.com/ccampbell/mousetrap).
 
-## Installation
+Installation
+------------
 
 You can the development version from GitHub with:
 
-``` r
-# install.packages("devtools")
-devtools::install_github("r4fun/keys")
-```
+    # install.packages("devtools")
+    devtools::install_github("r4fun/keys")
 
-## Usage
+Usage
+-----
 
 To use `{keys}`, start by adding a dependency to it using `useKeys()`.
 
 Then, you can add a `keysInput` to the UI:
 
-``` r
-library(shiny)
-library(keys)
+    library(shiny)
+    library(keys)
 
-hotkeys <- c(
-  "1", 
-  "command+shift+k", 
-  "up up down down left right left right b a enter"
-)
+    hotkeys <- c(
+      "1", 
+      "command+shift+k", 
+      "up up down down left right left right b a enter"
+    )
 
-ui <- fluidPage(
-  useKeys(),
-  keysInput("keys", hotkeys)
-)
+    ui <- fluidPage(
+      useKeys(),
+      keysInput("keys", hotkeys)
+    )
 
-server <- function(input, output, session) {
-  observeEvent(input$keys, {
-    print(input$keys)
-  })
-}
+    server <- function(input, output, session) {
+      observeEvent(input$keys, {
+        print(input$keys)
+      })
+    }
 
-shinyApp(ui, server)
-```
+    shinyApp(ui, server)
 
 You can add binding after application launch using `addKeys`.
 
-``` r
-library(shiny)
-library(keys)
+    library(shiny)
+    library(keys)
 
-ui <- fluidPage(
-  useKeys(),
-  actionButton("add", "Add keybinding")
-)
+    ui <- fluidPage(
+      useKeys(),
+      actionButton("add", "Add keybinding")
+    )
 
-server <- function(input, output, session) {
-  observeEvent(input$add, {
-    addKeys("keys", c("a", "b", "c"))
-  })
-  observeEvent(input$keys, {
-    print(input$keys)
-  })
-}
+    server <- function(input, output, session) {
+      observeEvent(input$add, {
+        addKeys("keys", c("a", "b", "c"))
+      })
+      observeEvent(input$keys, {
+        print(input$keys)
+      })
+    }
 
-shinyApp(ui, server)
-```
+    shinyApp(ui, server)
 
 Bindings can be removed after application launch using `removeKey`.
 
-``` r
-library(shiny)
-library(keys)
+    library(shiny)
+    library(keys)
 
-ui <- fluidPage(
-  useKeys(),
-  keysInput("keys", c("a", "b", "c")),
-  actionButton("rm", "Remove `a` keybinding")
-)
+    ui <- fluidPage(
+      useKeys(),
+      keysInput("keys", c("a", "b", "c")),
+      actionButton("rm", "Remove `a` keybinding")
+    )
 
-server <- function(input, output, session) {
-  observeEvent(input$rm, {
-    removeKeys(c("a", "b"))
-  })
-  observeEvent(input$keys, {
-    print(input$keys)
-  })
-}
+    server <- function(input, output, session) {
+      observeEvent(input$rm, {
+        removeKeys("a")
+      })
+      observeEvent(input$keys, {
+        print(input$keys)
+      })
+    }
 
-shinyApp(ui, server)
-```
+    shinyApp(ui, server)
 
 For more information about what types of hotkeys you can use, please
 take a look at the mousetrap github
 [repository](https://github.com/ccampbell/mousetrap).
 
-## Acknowledgements
+Acknowledgements
+----------------
 
 All credit goes to [Craig Campbell](https://github.com/ccampbell) who is
 the author of [`mousetrap.js`](https://github.com/ccampbell/mousetrap).
