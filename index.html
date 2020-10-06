@@ -80,83 +80,79 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>The goal of keys is to add hotkeys to shiny applications using <a href="https://github.com/ccampbell/mousetrap"><code>mousetrap.js</code></a>.</p>
+<p>The goal of <a href="https://github.com/r4fun/keys">keys</a> is to add hotkeys to shiny applications using <a href="https://github.com/ccampbell/mousetrap"><code>mousetrap.js</code></a>.</p>
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
 <p>You can the development version from GitHub with:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="co"># install.packages("devtools")</span>
-<span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"r4fun/keys"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a><span class="co"># install.packages("devtools")</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>devtools<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"r4fun/keys"</span>)</span></code></pre></div>
 </div>
 <div id="usage" class="section level2">
 <h2 class="hasAnchor">
 <a href="#usage" class="anchor"></a>Usage</h2>
 <p>To use <a href="https://github.com/r4fun/keys">keys</a>, start by adding a dependency to it using <code><a href="reference/useKeys.html">useKeys()</a></code>.</p>
 <p>Then, you can add a <code>keysInput</code> to the UI:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://shiny.rstudio.com">shiny</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r4fun/keys">keys</a></span><span class="op">)</span>
-
-<span class="va">hotkeys</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>
-  <span class="st">"1"</span>, 
-  <span class="st">"command+shift+k"</span>, 
-  <span class="st">"up up down down left right left right b a enter"</span>
-<span class="op">)</span>
-
-<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span><span class="op">(</span>
-  <span class="fu"><a href="reference/useKeys.html">useKeys</a></span><span class="op">(</span><span class="op">)</span>,
-  <span class="fu"><a href="reference/keysInput.html">keysInput</a></span><span class="op">(</span><span class="st">"keys"</span>, <span class="va">hotkeys</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span><span class="op">)</span>
-  <span class="op">}</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">library</span>(keys)</span>
+<span id="cb2-3"><a href="#cb2-3"></a></span>
+<span id="cb2-4"><a href="#cb2-4"></a>hotkeys &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="st">"1"</span>, </span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="st">"command+shift+k"</span>, </span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="st">"up up down down left right left right b a enter"</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb2-11"><a href="#cb2-11"></a>  <span class="kw">useKeys</span>(),</span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="kw">keysInput</span>(<span class="st">"keys"</span>, hotkeys)</span>
+<span id="cb2-13"><a href="#cb2-13"></a>)</span>
+<span id="cb2-14"><a href="#cb2-14"></a></span>
+<span id="cb2-15"><a href="#cb2-15"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</span>
+<span id="cb2-16"><a href="#cb2-16"></a>  <span class="kw">observeEvent</span>(input<span class="op">$</span>keys, {</span>
+<span id="cb2-17"><a href="#cb2-17"></a>    <span class="kw">print</span>(input<span class="op">$</span>keys)</span>
+<span id="cb2-18"><a href="#cb2-18"></a>  })</span>
+<span id="cb2-19"><a href="#cb2-19"></a>}</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
 <p>You can add binding after application launch using <code>addKeys</code>.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://shiny.rstudio.com">shiny</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r4fun/keys">keys</a></span><span class="op">)</span>
-
-<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span><span class="op">(</span>
-  <span class="fu"><a href="reference/useKeys.html">useKeys</a></span><span class="op">(</span><span class="op">)</span>,
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/actionButton.html">actionButton</a></span><span class="op">(</span><span class="st">"add"</span>, <span class="st">"Add keybinding"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">add</span>, <span class="op">{</span>
-    <span class="fu"><a href="reference/addKeys.html">addKeys</a></span><span class="op">(</span><span class="st">"keys"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">}</span><span class="op">)</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span><span class="op">)</span>
-  <span class="op">}</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">library</span>(keys)</span>
+<span id="cb3-3"><a href="#cb3-3"></a></span>
+<span id="cb3-4"><a href="#cb3-4"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="kw">useKeys</span>(),</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="kw">actionButton</span>(<span class="st">"add"</span>, <span class="st">"Add keybinding"</span>)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</span>
+<span id="cb3-10"><a href="#cb3-10"></a>  <span class="kw">observeEvent</span>(input<span class="op">$</span>add, {</span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="kw">addKeys</span>(<span class="st">"keys"</span>, <span class="kw">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>))</span>
+<span id="cb3-12"><a href="#cb3-12"></a>  })</span>
+<span id="cb3-13"><a href="#cb3-13"></a>  <span class="kw">observeEvent</span>(input<span class="op">$</span>keys, {</span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="kw">print</span>(input<span class="op">$</span>keys)</span>
+<span id="cb3-15"><a href="#cb3-15"></a>  })</span>
+<span id="cb3-16"><a href="#cb3-16"></a>}</span>
+<span id="cb3-17"><a href="#cb3-17"></a></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
 <p>Bindings can be removed after application launch using <code>removeKey</code>.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://shiny.rstudio.com">shiny</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r4fun/keys">keys</a></span><span class="op">)</span>
-
-<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span><span class="op">(</span>
-  <span class="fu"><a href="reference/useKeys.html">useKeys</a></span><span class="op">(</span><span class="op">)</span>,
-  <span class="fu"><a href="reference/keysInput.html">keysInput</a></span><span class="op">(</span><span class="st">"keys"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/actionButton.html">actionButton</a></span><span class="op">(</span><span class="st">"rm"</span>, <span class="st">"Remove `a` keybinding"</span><span class="op">)</span>
-<span class="op">)</span>
-
-<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">rm</span>, <span class="op">{</span>
-    <span class="fu"><a href="reference/addKeys.html">removeKeys</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"a"</span>, <span class="st">"b"</span><span class="op">)</span><span class="op">)</span>
-  <span class="op">}</span><span class="op">)</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
-    <span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span><span class="op">)</span>
-  <span class="op">}</span><span class="op">)</span>
-<span class="op">}</span>
-
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">library</span>(shiny)</span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="kw">library</span>(keys)</span>
+<span id="cb4-3"><a href="#cb4-3"></a></span>
+<span id="cb4-4"><a href="#cb4-4"></a>ui &lt;-<span class="st"> </span><span class="kw">fluidPage</span>(</span>
+<span id="cb4-5"><a href="#cb4-5"></a>  <span class="kw">useKeys</span>(),</span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="kw">keysInput</span>(<span class="st">"keys"</span>, <span class="kw">c</span>(<span class="st">"a"</span>, <span class="st">"b"</span>, <span class="st">"c"</span>)),</span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="kw">actionButton</span>(<span class="st">"rm"</span>, <span class="st">"Remove `a` keybinding"</span>)</span>
+<span id="cb4-8"><a href="#cb4-8"></a>)</span>
+<span id="cb4-9"><a href="#cb4-9"></a></span>
+<span id="cb4-10"><a href="#cb4-10"></a>server &lt;-<span class="st"> </span><span class="cf">function</span>(input, output, session) {</span>
+<span id="cb4-11"><a href="#cb4-11"></a>  <span class="kw">observeEvent</span>(input<span class="op">$</span>rm, {</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="kw">removeKeys</span>(<span class="st">"a"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13"></a>  })</span>
+<span id="cb4-14"><a href="#cb4-14"></a>  <span class="kw">observeEvent</span>(input<span class="op">$</span>keys, {</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    <span class="kw">print</span>(input<span class="op">$</span>keys)</span>
+<span id="cb4-16"><a href="#cb4-16"></a>  })</span>
+<span id="cb4-17"><a href="#cb4-17"></a>}</span>
+<span id="cb4-18"><a href="#cb4-18"></a></span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="kw">shinyApp</span>(ui, server)</span></code></pre></div>
 <p>For more information about what types of hotkeys you can use, please take a look at the mousetrap github <a href="https://github.com/ccampbell/mousetrap">repository</a>.</p>
 </div>
 <div id="acknowledgements" class="section level2">
