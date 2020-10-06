@@ -32,7 +32,9 @@ devtools::install_github("r4fun/keys")
 
 ## Usage
 
-Simply provide a `keysInput` to the UI:
+To use `{keys}`, start by adding a dependency to it using `useKeys()`.
+
+Then, you can add a `keysInput` to the UI:
 
 ```r
 library(shiny)
@@ -45,10 +47,58 @@ hotkeys <- c(
 )
 
 ui <- fluidPage(
+  useKeys(),
   keysInput("keys", hotkeys)
 )
 
 server <- function(input, output, session) {
+  observeEvent(input$keys, {
+    print(input$keys)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+You can add binding after application launch using `addKeys`.
+
+```r
+library(shiny)
+library(keys)
+
+ui <- fluidPage(
+  useKeys(),
+  actionButton("add", "Add keybinding")
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$add, {
+    addKeys("keys", c("a", "b", "c"))
+  })
+  observeEvent(input$keys, {
+    print(input$keys)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+Bindings can be removed after application launch using `removeKey`.
+
+```r
+library(shiny)
+library(keys)
+
+ui <- fluidPage(
+  useKeys(),
+  keysInput("keys", c("a", "b", "c")),
+  actionButton("rm", "Remove `a` keybinding")
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$rm, {
+    removeKeys(c("a", "b"))
+  })
   observeEvent(input$keys, {
     print(input$keys)
   })

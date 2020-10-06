@@ -3,6 +3,7 @@ Title: Keyboard Shortcuts for 'shiny'
 Version: 0.1.0
 Authors@R: c(
   person(given = "Tyler", family = "Littlefield", role = c("aut", "cre"), email = "tylerlittlefield@hey.com", comment = "Author of Javascript wrapper"),
+  person(given = "Colin", family = "Fay", role = "aut", email = "contact@colinfay.me", comment = c(ORCID = "0000-0001-7343-1846")),
   person(given = "Craig", family = "Campbell", role = c("cph"), comment = "Author of JavaScript code"))
 Description: Assign and listen to keyboard shortcuts in 'shiny' using the 
   'Mousetrap' Javascript library.
@@ -12,6 +13,7 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
-    htmltools
+    htmltools,
+    shiny
 URL: https://github.com/r4fun/keys
 BugReports: https://github.com/r4fun/keys/issues
