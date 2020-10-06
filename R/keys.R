@@ -31,6 +31,6 @@
 #' @export
 keysInput <- function(inputId, keys) {
   htmltools::tagList(
-    lapply(keys, function(x) keys_js(inputId, x))
+    keys_js(inputId, keys)
   )
 }
