@@ -2,16 +2,19 @@ minify <- function(x) {
   gsub("[[:space:]]+", " ", x)
 }
 
+#' @importFrom htmltools tags
+#' @importFrom jsonlite toJSON
 keys_js <- function(id, keys) {
-  binds <- sprintf(
-    "Mousetrap.bind('%s', function() {
-      Shiny.setInputValue('%s', '%s', {priority: 'event'});
-    });", keys, id, keys
-  )
 
   x <- sprintf("$(document).on('shiny:sessioninitialized', function() {
-    %s
-  });", paste(binds, collapse = "\n"))
+    Mousetrap.bind(%s, function(e, combo) {
+      Shiny.setInputValue('%s', combo, {priority: 'event'});
+    });
+  });", toJSON(keys), id)
 
-  htmltools::tags$head(htmltools::tags$script(minify(x)))
+  tags$head(
+    tags$script(
+      minify(x)
+    )
+  )
 }
