@@ -9,6 +9,8 @@ addKeys <- function(
   keys,
   session = shiny::getDefaultReactiveDomain()
 ){
+  if (is.null(session)) alert_null_session()
+
   lapply(
     keys, function(x){
       session$sendCustomMessage(
@@ -29,6 +31,8 @@ removeKeys <- function(
   keys,
   session = shiny::getDefaultReactiveDomain()
 ){
+  if (is.null(session)) alert_null_session()
+
   lapply(
     keys, function(x){
       session$sendCustomMessage(

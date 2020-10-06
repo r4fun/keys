@@ -18,3 +18,11 @@ keys_js <- function(id, keys) {
     )
   )
 }
+
+alert_null_session <- function() {
+  stop(
+    "Could not find a shiny session object.",
+    "\n* This usually happens when a {keys} function is called from a context that wasn't set up by a shiny session.",
+    call. = FALSE
+  )
+}
