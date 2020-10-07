@@ -7,4 +7,10 @@ $( document ).ready(function() {
   Shiny.addCustomMessageHandler('remove_mousetrap_binding', function(arg) {
     Mousetrap.unbind(arg.keys);
   })
+  Shiny.addCustomMessageHandler('mousetrap_pause', function(arg) {
+    Mousetrap.pause();
+  })
+  Shiny.addCustomMessageHandler('mousetrap_unpause', function(arg) {
+    Mousetrap.unpause();
+  })
 });
