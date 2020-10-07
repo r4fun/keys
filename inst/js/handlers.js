@@ -7,4 +7,9 @@ $( document ).ready(function() {
   Shiny.addCustomMessageHandler('remove_mousetrap_binding', function(arg) {
     Mousetrap.unbind(arg.keys);
   })
+  Shiny.addCustomMessageHandler('record_mousetrap_binding', function(arg) {
+    Mousetrap.record(function(sequence) {
+      Shiny.setInputValue(arg.id, sequence.join(' '), {priority: 'event'});
+    });
+  })
 });

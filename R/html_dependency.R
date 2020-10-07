@@ -3,12 +3,8 @@ html_dependency_mousetrap <- function() {
   htmltools::htmlDependency(
     name = "mousetrap",
     version = "1.6.5",
-    package = "keys",
-    src = c(
-      file = "mousetrap",
-      href = "https://unpkg.com/mousetrap@1.6.5"
-    ),
-    script = "mousetrap.min.js"
+    src = system.file("mousetrap", package = "keys"),
+    script = c("mousetrap.min.js", "mousetrap-record.min.js")
   )
 }
 
@@ -22,4 +18,3 @@ html_dependency_keys <- function() {
     script = "handlers.js",
   )
 }
-

@@ -2,6 +2,8 @@
 
 export(addKeys)
 export(keysInput)
+export(keysRecordInput)
+export(recordKeys)
 export(removeKeys)
 export(useKeys)
 importFrom(htmltools,htmlDependency)
