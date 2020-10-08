@@ -1,0 +1,133 @@
+---
+title: "Using keys to navigate"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using keys to navigate}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Navigating a web app without pointing and clicking is common in many popular websites. For example, GitHub has a number of [hotkeys](https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/keyboard-shortcuts), all of which can be viewed by pressing <kbd>?</kbd>.
+
+The same functionality can be used in shiny apps with `keys`. In this vignette, we'll go over a small example that demonstrates how you can use `keys` to navigate a shiny app with tabs. First we start by loading the required packages:
+
+```{r setup}
+library(keys)
+library(shiny)
+```
+
+Next, we define the UI part of our app:
+
+```{r ui definition}
+ui <- fluidPage(
+  useKeys(),
+  keysInput("keys", c("1", "2", "3")),
+  tabsetPanel(
+    id = "tabs",
+    tabPanel("Tab 1", "We're on tab 1"),
+    tabPanel("Tab 2", "We're on tab 2"),
+    tabPanel("Tab 3", "We're on tab 3")
+  )
+)
+```
+
+This interface has 3 components:
+
+1. Javascript dependencies
+2. A `keys` input with some defined hotkeys
+3. A `tabsetPanel`
+
+It's important to note that the `tabsetPanel` has an ID assigned to it. An ID must be assigned to a `tabsetPanel` in order to observe which tab is active from the server, `?tabsetPanel` will give some additional detail on this.
+
+The last step is to write the server logic:
+
+```{r server logic}
+server <- function(input, output, session) {
+  observeEvent(input$keys, {
+    switch (input$keys,
+      "1" = updateTabsetPanel(session, "tabs", "Tab 1"),
+      "2" = updateTabsetPanel(session, "tabs", "Tab 2"),
+      "3" = updateTabsetPanel(session, "tabs", "Tab 3")
+    )
+  })
+}
+```
+
+With this, we can observe which hotkeys the user presses and then update which tab is active. We could even bypass the `switch` call by providing a `value` to each `tabPanel` that corresponds with the hotkeys:
+
+```{r ui definition with tab values, eval=FALSE}
+tabPanel("Tab 1", "We're on tab 1", value = "1")
+tabPanel("Tab 2", "We're on tab 2", value = "2")
+tabPanel("Tab 3", "We're on tab 3", value = "3")
+```
+
+The server would then be simplified to:
+
+```{r simplified server, eval=FALSE}
+observeEvent(input$keys, {
+  updateTabsetPanel(session, "tabs", input$keys)
+})
+```
+
+This is pretty much all you need to start using `keys` for conditional logic in your app. With functions like `addKeys`, `removeKeys`, `recordKeys`, and more, you can be even more creative with the logic. 
+
+Lastly, below is the full scripts for both apps demonstrated above:
+
+```{r full scripts, eval=FALSE}
+# without tab values assigned
+library(keys)
+library(shiny)
+
+ui <- fluidPage(
+  useKeys(),
+  keysInput("keys", c("1", "2", "3")),
+  tabsetPanel(
+    id = "tabs",
+    tabPanel("Tab 1", "We're on tab 1"),
+    tabPanel("Tab 2", "We're on tab 2"),
+    tabPanel("Tab 3", "We're on tab 3")
+  )
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$keys, {
+    switch (input$keys,
+      "1" = updateTabsetPanel(session, "tabs", "Tab 1"),
+      "2" = updateTabsetPanel(session, "tabs", "Tab 2"),
+      "3" = updateTabsetPanel(session, "tabs", "Tab 3")
+    )
+  })
+}
+
+shinyApp(ui, server)
+
+# with tab values assigned
+library(keys)
+library(shiny)
+
+ui <- fluidPage(
+  useKeys(),
+  keysInput("keys", c("1", "2", "3")),
+  tabsetPanel(
+    id = "tabs",
+    tabPanel("Tab 1", "We're on tab 1", value = "1"),
+    tabPanel("Tab 2", "We're on tab 2", value = "2"),
+    tabPanel("Tab 3", "We're on tab 3", value = "3")
+  )
+)
+
+server <- function(input, output, session) {
+  observeEvent(input$keys, {
+    updateTabsetPanel(session, "tabs", input$keys)
+  })
+}
+
+shinyApp(ui, server)
+```
