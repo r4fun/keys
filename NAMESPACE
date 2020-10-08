@@ -2,7 +2,9 @@
 
 export(addKeys)
 export(keysInput)
+export(keysRecordInput)
 export(pauseKey)
+export(recordKeys)
 export(removeKeys)
 export(unpauseKey)
 export(useKeys)

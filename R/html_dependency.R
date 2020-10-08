@@ -4,7 +4,11 @@ html_dependency_mousetrap <- function() {
     name = "mousetrap",
     version = "1.6.5",
     src = system.file("mousetrap", package = "keys"),
-    script = c("mousetrap.min.js", "mousetrap-pause.min.js")
+    script = c(
+      "mousetrap.min.js",
+      "mousetrap-pause.min.js",
+      "mousetrap-record.min.js"
+    )
   )
 }
 
@@ -18,4 +22,3 @@ html_dependency_keys <- function() {
     script = "handlers.js",
   )
 }
-
