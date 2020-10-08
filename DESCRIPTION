@@ -18,3 +18,7 @@ Imports:
     jsonlite
 URL: https://github.com/r4fun/keys
 BugReports: https://github.com/r4fun/keys/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
