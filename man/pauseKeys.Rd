@@ -2,9 +2,12 @@
 % Please edit documentation in R/pause.R
 \name{pauseKey}
 \alias{pauseKey}
+\alias{unpauseKey}
 \title{Pause or Unpause Keys}
 \usage{
 pauseKey(session = shiny::getDefaultReactiveDomain())
+
+unpauseKey(session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to

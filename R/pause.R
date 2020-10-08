@@ -51,7 +51,7 @@ pauseKey <- function(
 }
 
 #' @export
-#' @rdname updateKeys
+#' @rdname pauseKeys
 unpauseKey <- function(
   session = shiny::getDefaultReactiveDomain()
 ){
