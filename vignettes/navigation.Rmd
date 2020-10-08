@@ -76,9 +76,9 @@ observeEvent(input$keys, {
 })
 ```
 
-This is pretty much all you need to start using `keys` for conditional logic in your app. With functions like `addKeys`, `removeKeys`, `recordKeys`, and more, you can be even more creative with the logic. 
+This is pretty much all you need to start using `keys` for conditional logic in your app. If you're looking for more advanced logic, you can be creative with functions like `addKeys`, `removeKeys`, and `recordKeys`. 
 
-Lastly, below is the full scripts for both apps demonstrated above:
+Finally, below is the full scripts for both apps demonstrated above:
 
 ```{r full scripts, eval=FALSE}
 # without tab values assigned
