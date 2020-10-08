@@ -11,14 +11,21 @@ status](https://github.com/r4fun/keys/workflows/R-CMD-check/badge.svg)](https://
 <!-- badges: end -->
 
 The goal of `{keys}` is to add hotkeys to shiny applications using
-[`mousetrap.js`](https://github.com/ccampbell/mousetrap). A
-demonstration of the package can be found
+[`Mousetrap`](https://github.com/ccampbell/mousetrap). With `{keys}`,
+you can:
+
+-   Assign hotkeys on app load
+-   Add and remove hotkeys from server
+-   Pause and unpause hotkeys from server
+-   Record keys from server
+
+A demonstration of the package can be found
 [here](https://r4fun.dev/shiny/keys-app/).
 
 Installation
 ------------
 
-You can the development version from GitHub with:
+You can install the development version from GitHub with:
 
     # install.packages("devtools")
     devtools::install_github("r4fun/keys")
@@ -103,4 +110,4 @@ Acknowledgements
 ----------------
 
 All credit goes to [Craig Campbell](https://github.com/ccampbell) who is
-the author of [`mousetrap.js`](https://github.com/ccampbell/mousetrap).
+the author of [`Mousetrap`](https://github.com/ccampbell/mousetrap).
