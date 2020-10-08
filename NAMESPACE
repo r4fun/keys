@@ -2,7 +2,9 @@
 
 export(addKeys)
 export(keysInput)
+export(pauseKey)
 export(removeKeys)
+export(unpauseKey)
 export(useKeys)
 importFrom(htmltools,htmlDependency)
 importFrom(htmltools,singleton)
