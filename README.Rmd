@@ -17,6 +17,8 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R build status](https://github.com/r4fun/keys/workflows/R-CMD-check/badge.svg)](https://github.com/r4fun/keys/actions)
+[![CRAN status](https://www.r-pkg.org/badges/version/keys)](https://CRAN.R-project.org/package=keys)
+[![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/keys)](https://cran.r-project.org/package=keys)
 <!-- badges: end -->
 
 The goal of `{keys}` is to add hotkeys to shiny applications using [`Mousetrap`](https://github.com/ccampbell/mousetrap). With `{keys}`, you can:
@@ -30,7 +32,13 @@ A demonstration of the package can be found [here](https://r4fun.dev/shiny/keys-
 
 ## Installation
 
-You can install the development version from GitHub with:
+Install the released version of `{keys}` from CRAN:
+
+```{r, eval=FALSE}
+install.packages("keys")
+```
+
+Or install the development version from GitHub with:
 
 ```r
 # install.packages("devtools")

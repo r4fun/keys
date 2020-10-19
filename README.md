@@ -1,13 +1,15 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-keys <img src="man/figures/logo.png" align="right" height=150/>
-===============================================================
+# keys <img src="man/figures/logo.png" align="right" height=150/>
 
 <!-- badges: start -->
 
 [![R build
 status](https://github.com/r4fun/keys/workflows/R-CMD-check/badge.svg)](https://github.com/r4fun/keys/actions)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/keys)](https://CRAN.R-project.org/package=keys)
+[![CRAN\_Download\_Badge](https://cranlogs.r-pkg.org/badges/keys)](https://cran.r-project.org/package=keys)
 <!-- badges: end -->
 
 The goal of `{keys}` is to add hotkeys to shiny applications using
@@ -22,92 +24,103 @@ you can:
 A demonstration of the package can be found
 [here](https://r4fun.dev/shiny/keys-app/).
 
-Installation
-------------
+## Installation
 
-You can install the development version from GitHub with:
+Install the released version of `{keys}` from CRAN:
 
-    # install.packages("devtools")
-    devtools::install_github("r4fun/keys")
+``` r
+install.packages("keys")
+```
 
-Usage
------
+Or install the development version from GitHub with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("r4fun/keys")
+```
+
+## Usage
 
 To use `{keys}`, start by adding a dependency to it using `useKeys()`.
 
 Then, you can add a `keysInput` to the UI:
 
-    library(shiny)
-    library(keys)
+``` r
+library(shiny)
+library(keys)
 
-    hotkeys <- c(
-      "1", 
-      "command+shift+k", 
-      "up up down down left right left right b a enter"
-    )
+hotkeys <- c(
+  "1", 
+  "command+shift+k", 
+  "up up down down left right left right b a enter"
+)
 
-    ui <- fluidPage(
-      useKeys(),
-      keysInput("keys", hotkeys)
-    )
+ui <- fluidPage(
+  useKeys(),
+  keysInput("keys", hotkeys)
+)
 
-    server <- function(input, output, session) {
-      observeEvent(input$keys, {
-        print(input$keys)
-      })
-    }
+server <- function(input, output, session) {
+  observeEvent(input$keys, {
+    print(input$keys)
+  })
+}
 
-    shinyApp(ui, server)
+shinyApp(ui, server)
+```
 
 You can add binding after application launch using `addKeys`.
 
-    library(shiny)
-    library(keys)
+``` r
+library(shiny)
+library(keys)
 
-    ui <- fluidPage(
-      useKeys(),
-      actionButton("add", "Add keybinding")
-    )
+ui <- fluidPage(
+  useKeys(),
+  actionButton("add", "Add keybinding")
+)
 
-    server <- function(input, output, session) {
-      observeEvent(input$add, {
-        addKeys("keys", c("a", "b", "c"))
-      })
-      observeEvent(input$keys, {
-        print(input$keys)
-      })
-    }
+server <- function(input, output, session) {
+  observeEvent(input$add, {
+    addKeys("keys", c("a", "b", "c"))
+  })
+  observeEvent(input$keys, {
+    print(input$keys)
+  })
+}
 
-    shinyApp(ui, server)
+shinyApp(ui, server)
+```
 
 Bindings can be removed after application launch using `removeKey`.
 
-    library(shiny)
-    library(keys)
+``` r
+library(shiny)
+library(keys)
 
-    ui <- fluidPage(
-      useKeys(),
-      keysInput("keys", c("a", "b", "c")),
-      actionButton("rm", "Remove `a` keybinding")
-    )
+ui <- fluidPage(
+  useKeys(),
+  keysInput("keys", c("a", "b", "c")),
+  actionButton("rm", "Remove `a` keybinding")
+)
 
-    server <- function(input, output, session) {
-      observeEvent(input$rm, {
-        removeKeys("a")
-      })
-      observeEvent(input$keys, {
-        print(input$keys)
-      })
-    }
+server <- function(input, output, session) {
+  observeEvent(input$rm, {
+    removeKeys("a")
+  })
+  observeEvent(input$keys, {
+    print(input$keys)
+  })
+}
 
-    shinyApp(ui, server)
+shinyApp(ui, server)
+```
 
 For more information about what types of hotkeys you can use, please
 take a look at the mousetrap github
 [repository](https://github.com/ccampbell/mousetrap).
 
-Acknowledgements
-----------------
+## Acknowledgements
 
 All credit goes to [Craig Campbell](https://github.com/ccampbell) who is
 the author of [`Mousetrap`](https://github.com/ccampbell/mousetrap).
