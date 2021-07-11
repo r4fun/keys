@@ -16,7 +16,7 @@ removeKeys(keys, session = shiny::getDefaultReactiveDomain())
 \code{command+shift+a}, \verb{up down left right}, and more.}
 
 \item{session}{The \code{session} object passed to function given to
-\code{shinyServer}.}
+\code{shinyServer}. Default is \code{getDefaultReactiveDomain()}.}
 }
 \description{
 Add a key binding from the server side

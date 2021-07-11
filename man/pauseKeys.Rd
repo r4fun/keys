@@ -11,7 +11,7 @@ unpauseKey(session = shiny::getDefaultReactiveDomain())
 }
 \arguments{
 \item{session}{The \code{session} object passed to function given to
-\code{shinyServer}.}
+\code{shinyServer}. Default is \code{getDefaultReactiveDomain()}.}
 }
 \description{
 These functions allow to pause and unpause keyboard watching
