@@ -13,7 +13,7 @@ recordKeys(inputId, session = shiny::getDefaultReactiveDomain())
 \item{inputId}{The input slot that will be used to access the value.}
 
 \item{session}{The \code{session} object passed to function given to
-\code{shinyServer}.}
+\code{shinyServer}. Default is \code{getDefaultReactiveDomain()}.}
 }
 \description{
 Create a key input that can be used to record keys pressed by

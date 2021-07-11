@@ -7,7 +7,8 @@ html_dependency_mousetrap <- function() {
     script = c(
       "mousetrap.min.js",
       "mousetrap-pause.min.js",
-      "mousetrap-record.min.js"
+      "mousetrap-record.min.js",
+      "mousetrap-global-bind.min.js"
     )
   )
 }
