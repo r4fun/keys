@@ -21,9 +21,6 @@ you can:
 -   Pause and unpause hotkeys from server
 -   Record keys from server
 
-A demonstration of the package can be found
-[here](https://r4fun.dev/shiny/keys-app/).
-
 ## Installation
 
 Install the released version of `{keys}` from CRAN:
