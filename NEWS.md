@@ -1,3 +1,5 @@
+# keys (development version)
+
 # keys 0.1.1
 
 * Added `global-bind` plugin which allows usage of hotkeys while `textInput` is active.

@@ -1,6 +1,6 @@
 Package: keys
 Title: Keyboard Shortcuts for 'shiny'
-Version: 0.1.1
+Version: 0.1.1.9000
 Authors@R: c(
   person(given = "Tyler", family = "Littlefield", role = c("aut", "cre"), email = "tylerlittlefield@hey.com", comment = "Author of Javascript wrapper"),
   person(given = "Colin", family = "Fay", role = "aut", email = "contact@colinfay.me", comment = c(ORCID = "0000-0001-7343-1846")),
