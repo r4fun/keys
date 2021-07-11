@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -72,7 +72,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/r4fun/keys/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -101,21 +101,21 @@
     
 <p>Navigating a web app without pointing and clicking is common in many popular websites. For example, GitHub has a number of <a href="https://docs.github.com/en/free-pro-team@latest/github/getting-started-with-github/keyboard-shortcuts">hotkeys</a>, all of which can be viewed by pressing <kbd>?</kbd>.</p>
 <p>The same functionality can be used in shiny apps with <code>keys</code>. In this vignette, we’ll go over a small example that demonstrates how you can use <code>keys</code> to navigate a shiny app with tabs. First we start by loading the required packages:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r4fun/keys">keys</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://shiny.rstudio.com">shiny</a></span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r4fun/keys">keys</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span></code></pre></div>
 <p>Next, we define the UI part of our app:</p>
-<div class="sourceCode" id="cb2"><pre class="downlit">
-<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
   <span class="fu"><a href="../reference/useKeys.html">useKeys</a></span><span class="op">(</span><span class="op">)</span>,
   <span class="fu"><a href="../reference/keysInput.html">keysInput</a></span><span class="op">(</span><span class="st">"keys"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabsetPanel.html">tabsetPanel</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabsetPanel.html">tabsetPanel</a></span><span class="op">(</span>
     id <span class="op">=</span> <span class="st">"tabs"</span>,
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 1"</span>, <span class="st">"We're on tab 1"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 2"</span>, <span class="st">"We're on tab 2"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 3"</span>, <span class="st">"We're on tab 3"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 1"</span>, <span class="st">"We're on tab 1"</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 2"</span>, <span class="st">"We're on tab 2"</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 3"</span>, <span class="st">"We're on tab 3"</span><span class="op">)</span>
   <span class="op">)</span>
-<span class="op">)</span></pre></div>
+<span class="op">)</span></code></pre></div>
 <p>This interface has 3 components:</p>
 <ol style="list-style-type: decimal">
 <li>Javascript dependencies</li>
@@ -123,80 +123,80 @@
 <li>A <code>tabsetPanel</code>
 </li>
 </ol>
-<p>It’s important to note that the <code>tabsetPanel</code> has an ID assigned to it. An ID must be assigned to a <code>tabsetPanel</code> in order to observe which tab is active from the server, <code><a href="https://shiny.rstudio.com/reference/shiny/latest/tabsetPanel.html">?tabsetPanel</a></code> will give some additional detail on this.</p>
+<p>It’s important to note that the <code>tabsetPanel</code> has an ID assigned to it. An ID must be assigned to a <code>tabsetPanel</code> in order to observe which tab is active from the server, <code><a href="https://rdrr.io/pkg/shiny/man/tabsetPanel.html">?tabsetPanel</a></code> will give some additional detail on this.</p>
 <p>The last step is to write the server logic:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
     <span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>,
-      <span class="st">"1"</span> <span class="op">=</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 1"</span><span class="op">)</span>,
-      <span class="st">"2"</span> <span class="op">=</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 2"</span><span class="op">)</span>,
-      <span class="st">"3"</span> <span class="op">=</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 3"</span><span class="op">)</span>
+      <span class="st">"1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 1"</span><span class="op">)</span>,
+      <span class="st">"2"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 2"</span><span class="op">)</span>,
+      <span class="st">"3"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 3"</span><span class="op">)</span>
     <span class="op">)</span>
   <span class="op">}</span><span class="op">)</span>
-<span class="op">}</span></pre></div>
+<span class="op">}</span></code></pre></div>
 <p>With this, we can observe which hotkeys the user presses and then update which tab is active. We could even bypass the <code>switch</code> call by providing a <code>value</code> to each <code>tabPanel</code> that corresponds with the hotkeys:</p>
-<div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 1"</span>, <span class="st">"We're on tab 1"</span>, value <span class="op">=</span> <span class="st">"1"</span><span class="op">)</span>
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 2"</span>, <span class="st">"We're on tab 2"</span>, value <span class="op">=</span> <span class="st">"2"</span><span class="op">)</span>
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 3"</span>, <span class="st">"We're on tab 3"</span>, value <span class="op">=</span> <span class="st">"3"</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 1"</span>, <span class="st">"We're on tab 1"</span>, value <span class="op">=</span> <span class="st">"1"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 2"</span>, <span class="st">"We're on tab 2"</span>, value <span class="op">=</span> <span class="st">"2"</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 3"</span>, <span class="st">"We're on tab 3"</span>, value <span class="op">=</span> <span class="st">"3"</span><span class="op">)</span></code></pre></div>
 <p>The server would then be simplified to:</p>
-<div class="sourceCode" id="cb5"><pre class="downlit">
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="va">input</span><span class="op">$</span><span class="va">keys</span><span class="op">)</span>
-<span class="op">}</span><span class="op">)</span></pre></div>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="va">input</span><span class="op">$</span><span class="va">keys</span><span class="op">)</span>
+<span class="op">}</span><span class="op">)</span></code></pre></div>
 <p>This is pretty much all you need to start using <code>keys</code> for conditional logic in your app. If you’re looking for more advanced logic, you can be creative with functions like <code>addKeys</code>, <code>removeKeys</code>, and <code>recordKeys</code>.</p>
 <p>Finally, below is the full scripts for both apps demonstrated above:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit">
-<span class="co"># without tab values assigned</span>
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span class="co"># without tab values assigned</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r4fun/keys">keys</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://shiny.rstudio.com">shiny</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
 
-<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
   <span class="fu"><a href="../reference/useKeys.html">useKeys</a></span><span class="op">(</span><span class="op">)</span>,
   <span class="fu"><a href="../reference/keysInput.html">keysInput</a></span><span class="op">(</span><span class="st">"keys"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabsetPanel.html">tabsetPanel</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabsetPanel.html">tabsetPanel</a></span><span class="op">(</span>
     id <span class="op">=</span> <span class="st">"tabs"</span>,
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 1"</span>, <span class="st">"We're on tab 1"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 2"</span>, <span class="st">"We're on tab 2"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 3"</span>, <span class="st">"We're on tab 3"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 1"</span>, <span class="st">"We're on tab 1"</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 2"</span>, <span class="st">"We're on tab 2"</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 3"</span>, <span class="st">"We're on tab 3"</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="op">)</span>
 
 <span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
     <span class="kw"><a href="https://rdrr.io/r/base/switch.html">switch</a></span> <span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>,
-      <span class="st">"1"</span> <span class="op">=</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 1"</span><span class="op">)</span>,
-      <span class="st">"2"</span> <span class="op">=</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 2"</span><span class="op">)</span>,
-      <span class="st">"3"</span> <span class="op">=</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 3"</span><span class="op">)</span>
+      <span class="st">"1"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 1"</span><span class="op">)</span>,
+      <span class="st">"2"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 2"</span><span class="op">)</span>,
+      <span class="st">"3"</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="st">"Tab 3"</span><span class="op">)</span>
     <span class="op">)</span>
   <span class="op">}</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span>
 
 <span class="co"># with tab values assigned</span>
 <span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/r4fun/keys">keys</a></span><span class="op">)</span>
-<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="http://shiny.rstudio.com">shiny</a></span><span class="op">)</span>
+<span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://shiny.rstudio.com/">shiny</a></span><span class="op">)</span>
 
-<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/fluidPage.html">fluidPage</a></span><span class="op">(</span>
+<span class="va">ui</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/fluidPage.html">fluidPage</a></span><span class="op">(</span>
   <span class="fu"><a href="../reference/useKeys.html">useKeys</a></span><span class="op">(</span><span class="op">)</span>,
   <span class="fu"><a href="../reference/keysInput.html">keysInput</a></span><span class="op">(</span><span class="st">"keys"</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"1"</span>, <span class="st">"2"</span>, <span class="st">"3"</span><span class="op">)</span><span class="op">)</span>,
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabsetPanel.html">tabsetPanel</a></span><span class="op">(</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabsetPanel.html">tabsetPanel</a></span><span class="op">(</span>
     id <span class="op">=</span> <span class="st">"tabs"</span>,
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 1"</span>, <span class="st">"We're on tab 1"</span>, value <span class="op">=</span> <span class="st">"1"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 2"</span>, <span class="st">"We're on tab 2"</span>, value <span class="op">=</span> <span class="st">"2"</span><span class="op">)</span>,
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 3"</span>, <span class="st">"We're on tab 3"</span>, value <span class="op">=</span> <span class="st">"3"</span><span class="op">)</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 1"</span>, <span class="st">"We're on tab 1"</span>, value <span class="op">=</span> <span class="st">"1"</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 2"</span>, <span class="st">"We're on tab 2"</span>, value <span class="op">=</span> <span class="st">"2"</span><span class="op">)</span>,
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/tabPanel.html">tabPanel</a></span><span class="op">(</span><span class="st">"Tab 3"</span>, <span class="st">"We're on tab 3"</span>, value <span class="op">=</span> <span class="st">"3"</span><span class="op">)</span>
   <span class="op">)</span>
 <span class="op">)</span>
 
 <span class="va">server</span> <span class="op">&lt;-</span> <span class="kw">function</span><span class="op">(</span><span class="va">input</span>, <span class="va">output</span>, <span class="va">session</span><span class="op">)</span> <span class="op">{</span>
-  <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
-    <span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="va">input</span><span class="op">$</span><span class="va">keys</span><span class="op">)</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/observeEvent.html">observeEvent</a></span><span class="op">(</span><span class="va">input</span><span class="op">$</span><span class="va">keys</span>, <span class="op">{</span>
+    <span class="fu"><a href="https://rdrr.io/pkg/shiny/man/updateTabsetPanel.html">updateTabsetPanel</a></span><span class="op">(</span><span class="va">session</span>, <span class="st">"tabs"</span>, <span class="va">input</span><span class="op">$</span><span class="va">keys</span><span class="op">)</span>
   <span class="op">}</span><span class="op">)</span>
 <span class="op">}</span>
 
-<span class="fu"><a href="https://shiny.rstudio.com/reference/shiny/latest/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></pre></div>
+<span class="fu"><a href="https://rdrr.io/pkg/shiny/man/shinyApp.html">shinyApp</a></span><span class="op">(</span><span class="va">ui</span>, <span class="va">server</span><span class="op">)</span></code></pre></div>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
