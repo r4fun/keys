@@ -9,12 +9,14 @@
 status](https://github.com/r4fun/keys/workflows/R-CMD-check/badge.svg)](https://github.com/r4fun/keys/actions)
 [![CRAN
 status](https://www.r-pkg.org/badges/version/keys)](https://CRAN.R-project.org/package=keys)
-[![CRAN\_Download\_Badge](https://cranlogs.r-pkg.org/badges/keys)](https://cran.r-project.org/package=keys)
+[![CRAN_Download_Badge](https://cranlogs.r-pkg.org/badges/keys)](https://cran.r-project.org/package=keys)
+[![Conda
+Version](https://img.shields.io/conda/vn/conda-forge/r-keys.svg)](https://anaconda.org/conda-forge/r-keys)
 <!-- badges: end -->
 
-The goal of `{keys}` is to add hotkeys to shiny applications using
-[`Mousetrap`](https://github.com/ccampbell/mousetrap). With `{keys}`,
-you can:
+The goal of `keys` is to add hotkeys to shiny applications using
+[`Mousetrap`](https://github.com/ccampbell/mousetrap). With `keys`, you
+can:
 
 -   Assign hotkeys on app load
 -   Add and remove hotkeys from server
@@ -23,7 +25,7 @@ you can:
 
 ## Installation
 
-Install the released version of `{keys}` from CRAN:
+Install the released version of `keys` from CRAN:
 
 ``` r
 install.packages("keys")
@@ -36,9 +38,12 @@ Or install the development version from GitHub with:
 devtools::install_github("r4fun/keys")
 ```
 
+You can also install `keys` with `conda-forge`. More information here:
+<https://github.com/conda-forge/r-keys-feedstock>
+
 ## Usage
 
-To use `{keys}`, start by adding a dependency to it using `useKeys()`.
+To use `keys`, start by adding a dependency to it using `useKeys()`.
 
 Then, you can add a `keysInput` to the UI:
 
